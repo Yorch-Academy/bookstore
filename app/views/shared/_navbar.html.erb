@@ -4,13 +4,15 @@
     <h3 class="font-bold text-lg text-white">The Bookstore App</h3>
   </div>
 
-  <div class="flex gap-5">
-    <%= link_to '#', id: 'sell_link', class: 'text-white font-semibold text-sm text-center bg-green-700 text-white rounded px-4 py-2' do %>
-      Add sell
-    <% end %>
+  <div class="flex">
+    <%= turbo_frame_tag 'new_record_component', class: 'flex gap-5' do %>
+      <%= link_to '#', id: 'sell_link', class: 'text-white font-semibold text-sm text-center bg-green-700 text-white rounded px-4 py-2' do %>
+        Add sell
+      <% end %>
 
-    <%= link_to '#', id: 'book_link', class: 'text-white font-semibold text-sm text-center bg-sky-700 text-white rounded px-4 py-2' do %>
-      Add a new book
+      <%= link_to new_book_path, id: 'book_link', class: 'text-white font-semibold text-sm text-center bg-sky-700 text-white rounded px-4 py-2' do %>
+        Add a new book
+      <% end %>
     <% end %>
   </div>
 </nav>
