@@ -1,6 +1,12 @@
 <%= turbo_frame_tag 'new_record_component' do %>
   <div class="flex w-full items-center">
     <%= form_with(model: book, class: 'flex w-full items-center gap-2') do |form| %>
+      <% if book.errors.any? %>
+        <% book.errors.each do |error| %>
+          <span class="text-white"><%= error.full_message %></span>
+        <% end %>
+      <% end %>
+
       <div class="flex items-center gap-2">
         <%= form.label :name, class: 'font-semibold text-white' %>
         <%= form.text_field :name, class: 'font-semibold rounded p-2 text-xs' %>
