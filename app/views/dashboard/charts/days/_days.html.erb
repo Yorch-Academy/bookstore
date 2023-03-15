@@ -1,7 +1,5 @@
 <section class="flex w-full flex-col border">
   <h3 class="text-white font-bold text-lg">Sells per day</h3>
 
-  <div data-controller="days" sell="<%= Sell.first.quantity %>">
-    <span class="text-white" data-action="click->days#test" >Click me</span>
-  </div>
+  <%= render 'dashboard/charts/days/chart' %>
 </section>
