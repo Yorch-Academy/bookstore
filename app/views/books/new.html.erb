@@ -1,3 +1,1 @@
-<%= turbo_frame_tag 'new_record_component' do %>
-  <span class="text-white">New Book</span>
-<% end %>
+<%= render 'form', { book: @book } %>

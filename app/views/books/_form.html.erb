@@ -1,0 +1,20 @@
+<%= turbo_frame_tag 'new_record_component' do %>
+  <div class="flex w-full items-center">
+    <%= form_with(model: book, class: 'flex w-full items-center gap-2') do |form| %>
+      <div class="flex items-center gap-2">
+        <%= form.label :name, class: 'font-semibold text-white' %>
+        <%= form.text_field :name, class: 'font-semibold rounded p-2 text-xs' %>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <%= form.label :price, class: 'font-semibold text-white' %>
+        <%= form.number_field :price, in: 1.0..100.0, step: :any, class: 'font-semibold rounded p-2 text-xs' %>
+      </div>
+
+      <div class="flex itemse-center justify-end gap-2 ml-5">
+        <%= form.submit class: 'font-semibold p-2 bg-sky-600 text-sm text-white rounded' %>
+        <%= link_to 'Cancel', :back, class:'font-semibold p-2 bg-red-600 text-sm text-white rounded' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
