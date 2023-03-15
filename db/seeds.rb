@@ -8,6 +8,6 @@
 
 book = Book.create(name: 'Harry Potter', price: 24.99)
 
-5.times do
+30.times do
   book.sells << Sell.create(quantity: rand(2..15), day: Sell::DAYS[rand(0..(Sell::DAYS.length))])
 end
