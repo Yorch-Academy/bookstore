@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+book = Book.create(name: 'Harry Potter', price: 24.99)
+
+5.times do
+  book.sells << Sell.create(quantity: rand(2..15), day: Sell::DAYS[rand(0..(Sell::DAYS.length))])
+end
