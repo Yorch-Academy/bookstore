@@ -3,28 +3,27 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     const divElement = this.element;
-    const data = JSON.parse(divElement.getAttribute('data-days-sells'));
-    const colors = ['red', 'green', 'blue', 'orange', 'brown', 'purple', 'yellow'];
-    let days = [];
+    const data = JSON.parse(divElement.getAttribute('data-revenue-sells'));
+    const colors = ['red', 'green', 'blue'];
+    let books = [];
     let total = [];
 
     data.forEach(element => {
-      days.push(element[0]);
+      books.push(element[0]);
       total.push(element[1]);
     });
 
-    new Chart("daySells", {
-      type: "bar",
+    new Chart("revenueSells", {
+      type: "pie",
       data: {
-        labels: days,
+        labels: books,
         datasets: [{
           backgroundColor: colors,
           data: total
         }]
       },
       options: {
-        legend: { display: false },
-        title: { display: false }
+        title: { display: true }
       }
     });
   }
