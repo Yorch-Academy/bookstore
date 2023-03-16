@@ -10,28 +10,29 @@ export default class extends Controller {
   // }
 
   connect() {
-    var xyValues = [
-      {x:50, y:7},
-      {x:60, y:8},
-      {x:70, y:8},
-      {x:80, y:9},
-      {x:90, y:9},
-      {x:100, y:9},
-      {x:110, y:10},
-      {x:120, y:11},
-      {x:130, y:14},
-      {x:140, y:14},
-      {x:150, y:15}
-    ];
+    const divElement = this.element;
+    const data = JSON.parse(divElement.getAttribute('data-days-sells'));
+    const colors = ['red', 'green', 'blue', 'orange', 'brown', 'purple', 'yellow'];
+    let days = [];
+    let total = [];
 
-    new Chart("myChart", {
-      type: "scatter",
+    data.forEach(element => {
+      days.push(element[0]);
+      total.push(element[1]);
+    });
+
+    new Chart("daySells", {
+      type: "bar",
       data: {
+        labels: days,
         datasets: [{
-          pointRadius: 4,
-          pointBackgroundColor: "rgba(0,0,255,1)",
-          data: xyValues
+          backgroundColor: colors,
+          data: total
         }]
+      },
+      options: {
+        legend: { display: false },
+        title: { display: false }
       }
     });
   }
