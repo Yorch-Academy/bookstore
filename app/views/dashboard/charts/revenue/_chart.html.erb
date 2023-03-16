@@ -1,3 +1,29 @@
 <div data-controller="revenue" data-revenue-sells="<%= revenue_from_sells %>" id="revenue_chart">
   <canvas id="revenueSells" style="width:100%;max-width:700px"></canvas>
+
+  <div class="flex flex-col bg-white p-5 rounded mt-10 m-5">
+    <h5 class="font-bold text-center my-5 text-xl">Sells per book</h5>
+
+    <table class="my-5">
+      <div class="flex w-full">
+        <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center">ID</div>
+        <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center">Name</div>
+        <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center">Revenue</div>
+      </div>
+
+      <div class="flex flex-col">
+        <% Book.all.each do |book| %>
+          <div class="flex">
+            <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center"><%= book.id %></div>
+            <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center"><%= book.name %></div>
+            <div class="w-1/3 flex items-center font-semibold border-2 justify-center text-sm text-center"><%= book.sells.sum(:total).round(2) %> USD</div>
+          </div>
+        <% end %>
+      </div>
+    </table>
+
+    <div>
+      <%= Sell.all.sum(:total).round(2) %>
+    </div>
+  </div>
 </div>
